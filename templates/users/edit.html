@@ -1,0 +1,23 @@
+{% include 'header.html' %}
+
+<form method="POST" action="/update" enctype="multipart/form-data">
+    {% for user in users %}
+
+
+    <input type="hidden" name="txtID" value="{{user[0]}}" id="txtID">
+    Nombre:
+    <input type="text" name="txtName" value="{{user[1]}}" id="txtName">
+    <br>
+
+    Foto<br>
+    <img class="img-thumbnail" width="100" src="{{url_for('uploads', namePhoto=user[2])}}" alt="">
+    <br>
+    <input type="file" name="txtFront" id="txtFront">
+    <br>
+
+    {% endfor %}
+
+    <input type="submit" value="Agregar">
+</form>
+
+{% include 'footer.html' %}

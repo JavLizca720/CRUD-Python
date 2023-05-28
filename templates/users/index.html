@@ -1,0 +1,32 @@
+{% include 'header.html' %}
+
+<br/>
+<a href="{{url_for('create')}}" class="btn btn-success">
+    Crear usuario
+</a>
+<br>
+<br>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Foto</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for user in users %}
+                <td>{{user[0]}}</td>
+                <td>{{user[1]}}</td>
+                <td><img class="img-thumnail" width="100" src="uploads/{{user[2]}}"></td>
+                <td><a class="btn btn-warning" href="/edit/{{user[0]}}">Editar</a></td> 
+                <td><a onclick="return confirm('¿Desea borrar el registro?')"
+                    class="btn btn-danger" href="/destroy/{{user[0]}}">Eliminar</a></td>           
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% include 'footer.html' %}
